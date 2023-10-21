@@ -1,12 +1,15 @@
-import Footer from "@/components/Footer";
+import FilaJuegos from "@/components/FilaJuegos";
 import Hero from "@/components/Hero";
-import Jaja from "@/components/jaja";
 
 export default function Home() {
-  return (    
-    <>      
-      <Hero />                  
-      <Jaja />
-    </>    
+  return (        
+    <>
+      <Hero />       
+      <FilaJuegos titulo={'Recién agregados'}/>
+
+      <FilaJuegos titulo={'nuevos'}/>
+
+      <FilaJuegos titulo={'usados'}/>
+    </>
   )
 }

@@ -16,7 +16,7 @@ const Hero = () => {
       </div>
 
       <div className='absolute bottom-0 left-0 w-full h-[60px] flex items-center justify-center'>
-        <BsArrowDown size={30} className='text-white animate-bounce' />
+        <BsArrowDown size={32} className='text-white animate-bounce' />
       </div>
     </div>
     

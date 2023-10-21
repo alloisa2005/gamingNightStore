@@ -17,8 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${josefin.variable} ${russo.variable} font-sans`}>
         <Navbar />
-        {children}
-        <Footer />
+        {children}        
       </body>
     </html>
   )
