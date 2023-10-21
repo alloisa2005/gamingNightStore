@@ -7,6 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        russo: ["var(--font-russo)"],
+        josefin: ["var(--font-josefin)"],
+      },   
+      colors: {
+        primario: "#232E7E",
+        gris: '#343A40',
+        naranja: '#F58220',        
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
