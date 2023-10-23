@@ -14,14 +14,14 @@ const Navbar = () => {
   }
 
   return (
-    <div className='w-full h-[80px] absolute top-0 left-0'>
+    <div className='w-full h-[65px] bg-black/80'>
       <nav className='max-w-[1350px] h-full mx-auto px-4 flex justify-between items-center'>
         
         <Link href={'/'} className='z-20'>
           <p className='font-russo text-white text-4xl'>g<span className='text-naranja'>N</span>s</p>
         </Link>        
 
-        <ul className='hidden lg:flex items-center gap-6 text-white font-josefin text-2xl font-bold z-20'>
+        <ul className='hidden lg:flex items-center gap-6 text-white font-josefin text-xl font-bold z-20'>
           {
             navbarLinks.map( link => (
               <Link key={link.id} href={link.path} className='cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100'>{link.name}</Link>    

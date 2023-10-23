@@ -1,8 +1,14 @@
+
 import FilaJuegos from "@/components/FilaJuegos";
 import Hero from "@/components/Hero";
 import { latestJuegos, nuevosJuegos, usadosJuegos } from "@/data/juegos";
 
-export default function Home() {
+export const metadata = {
+  title: "Gaming Night Store | Inicio",  
+};
+
+export default function Home() {  
+
   return (        
     <>
       <Hero />  

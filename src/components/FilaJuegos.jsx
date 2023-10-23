@@ -1,15 +1,34 @@
-import Image from 'next/image'
+'use client'
+
+import { arrayAleatorioNoRepetido, nuevoArray } from '@/utils/arrays'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import JuegoCard from './JuegoCard'
 
-const FilaJuegos = ({titulo, juegos}) => {
+
+const FilaJuegos = ({titulo, juegos}) => {    
+
+  const [cantidad, setCantidad] = useState(2); 
+  const [lista, setLista] = useState([]);
+
+  useEffect(() => {
+    if(window.innerWidth < 768) {
+      setCantidad(2)
+    } else if(window.innerWidth < 1024) {
+      setCantidad(3)
+    } else {
+      setCantidad(4)
+    }
+
+    setLista(arrayAleatorioNoRepetido(juegos, cantidad))
+  }, [juegos, cantidad])
+  
   return (
     <div className='contenedor pt-3'>
       <h1 className='font-josefin font-bold italic text-xl md:text-2xl uppercase border-b-2 border-b-naranja'>{titulo}</h1>
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
         {
-          juegos.map(juego => (
+          lista.map(juego => (
             <JuegoCard key={juego.id} juego={juego} />
           ))
         }        
