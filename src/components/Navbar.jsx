@@ -6,6 +6,7 @@ import { RiMenu4Line } from "react-icons/ri";
 import { CgClose } from "react-icons/cg";
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
+import SignInButton from "./SignInButton";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
@@ -37,23 +38,8 @@ const Navbar = () => {
           >
             Juegos
           </Link>
-          {session ? (
-            <Image
-              src={session.user.image}
-              width={40}
-              height={40}
-              alt="User Image"
-              onClick={() => signOut()}
-              className="rounded-full border-2 border-white hover:scale-125 hover:cursor-pointer hover:border-naranja hover:border-2 ease-out duration-300"
-            />
-          ) : (
-            <Link
-              href={"/signin"}
-              className="cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
-            >
-              Iniciar Sesión
-            </Link>
-          )}
+          
+          <SignInButton />
         </ul>
 
         <div className="lg:hidden cursor-pointer z-20" onClick={handleNavbar}>

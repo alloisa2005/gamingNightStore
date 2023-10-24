@@ -54,7 +54,7 @@ const SignInForm = () => {
 
       <div className="mt-3 flex items-center gap-6">
         <div className="flex-1 h-[1px] bg-gray-400"></div>
-        <h1 className="font-josefin font-bold text-2xl">ó</h1>
+        <h1 className="font-josefin font-bold text-xl">ó</h1>
         <div className="flex-1 h-[1px] bg-gray-400"></div>
       </div>
 
@@ -65,7 +65,7 @@ const SignInForm = () => {
 
       <div className="flex items-center justify-end gap-3 mt-4">
         <p>¿No tienes una cuenta?</p>
-        <Link href="#" className="text-blue-500 border-b border-blue-500">Regístrate</Link>
+        <Link href="#" className="text-blue-500 border-b border-blue-500 hover:text-naranja hover:border-naranja ease-out duration-300">Regístrate</Link>
       </div>
     </form>
   );
