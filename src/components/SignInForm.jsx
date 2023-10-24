@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { signIn } from 'next-auth/react'
 
 const SignInForm = () => {
   const [email, setEmail] = useState("");
@@ -57,7 +58,7 @@ const SignInForm = () => {
         <div className="flex-1 h-[1px] bg-gray-400"></div>
       </div>
 
-      <button className="w-full bg-black/75 flex items-center justify-center gap-4 py-2 text-white font-josefin text-xl mt-3 rounded-lg hover:scale-105 ease-out duration-300 hover:shadow-md">
+      <button onClick={() => signIn('google', {callbackUrl: '/'})} className="w-full bg-black/75 flex items-center justify-center gap-4 py-2 text-white font-josefin text-xl mt-3 rounded-lg hover:scale-105 ease-out duration-300 hover:shadow-md">
         <FcGoogle size={28} />
         <h1>Inicia Sesión con Google</h1>
       </button>

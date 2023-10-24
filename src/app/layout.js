@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
+import ProviderSession from '@/components/ProviderSession'
 import { Inter, Josefin_Sans, Russo_One } from 'next/font/google'
 import './globals.css'
 
@@ -16,8 +17,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${josefin.variable} ${russo.variable} font-sans`}>
-        <Navbar />
-        {children}        
+        <ProviderSession>
+          <Navbar />
+          {children}        
+        </ProviderSession>
       </body>
     </html>
   )

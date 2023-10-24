@@ -5,8 +5,11 @@ import React, { useState } from 'react'
 import { RiMenu4Line } from 'react-icons/ri'
 import { CgClose }  from 'react-icons/cg';
 import { navbarLinks } from '@/utils/navbarLinks';
+import { useSession, signOut } from 'next-auth/react'
+import Image from 'next/image';
 
 const Navbar = () => {
+  const { data: session, status } = useSession();
   const [navbar, setNavbar] = useState(false);
 
   const handleNavbar = () => {
@@ -28,6 +31,12 @@ const Navbar = () => {
             ))
           }                    
         </ul>
+        {
+          session && (
+            <Image onClick={() => signOut()} src={session.user.image} alt='Logo' width={50} height={50} />
+          )
+        }
+
 
         <div className='lg:hidden cursor-pointer z-20' onClick={handleNavbar}>
           {navbar ? <CgClose size={28} className='text-white'/> : <RiMenu4Line size={28} className='text-white'/> }
