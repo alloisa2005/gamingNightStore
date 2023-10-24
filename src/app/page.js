@@ -7,7 +7,7 @@ export const metadata = {
   title: "Gaming Night Store | Inicio",  
 };
 
-export default function Home() {  
+export default async function Home() {    
 
   return (        
     <>
