@@ -25,11 +25,9 @@ const Navbar = () => {
         </Link>        
 
         <ul className='hidden lg:flex items-center gap-6 text-white font-josefin text-xl font-bold z-20'>
-          {
-            navbarLinks.map( link => (
-              <Link key={link.id} href={link.path} className='cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100'>{link.name}</Link>    
-            ))
-          }                    
+          <Link href={'/'} className='cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100'>Inicio</Link>
+          <Link href={'/juegos'} className='cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100'>Juegos</Link>
+          <Link href={'/signin'} className='cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100'>Iniciar Sesión</Link>
         </ul>
         {
           session && (
@@ -37,18 +35,15 @@ const Navbar = () => {
           )
         }
 
-
         <div className='lg:hidden cursor-pointer z-20' onClick={handleNavbar}>
           {navbar ? <CgClose size={28} className='text-white'/> : <RiMenu4Line size={28} className='text-white'/> }
         </div>        
 
         <div className={navbar ? 'z-10 lg:hidden fixed top-0 right-0 w-full md:w-[60%] h-full bg-black ease-in duration-500' : 'z-10 lg:hidden fixed top-0 right-[-100%] w-full md:w-[70%] h-full bg-black ease-in duration-500'}>        
           <ul className='mt-28 w-full h-full flex flex-col gap-8 text-white font-poppins text-2xl items-end px-6'>
-            {
-              navbarLinks.map( link => (
-                <Link key={link.id} href={link.path} onClick={handleNavbar} className='border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer'>{link.name}</Link>    
-              ))
-            }            
+            <Link href={'/'} onClick={handleNavbar} className='border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer'>Inicio</Link>
+            <Link href={'/juegos'} onClick={handleNavbar} className='border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer'>Juegos</Link>
+            <Link href={'/signin'} onClick={handleNavbar} className='border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer'>Iniciar Sesión</Link>
           </ul>
         </div>
       </nav>      
