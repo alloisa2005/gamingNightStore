@@ -27,7 +27,13 @@ const Navbar = () => {
         <ul className='hidden lg:flex items-center gap-6 text-white font-josefin text-xl font-bold z-20'>
           <Link href={'/'} className='cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100'>Inicio</Link>
           <Link href={'/juegos'} className='cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100'>Juegos</Link>
-          <Link href={'/signin'} className='cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100'>Iniciar Sesión</Link>
+          {
+            session ? (
+              <Image src={session.user.image} width={30} height={30} alt='User Image'/>
+            ):(
+              <Link href={'/signin'} className='cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100'>Iniciar Sesión</Link>
+            )
+          }          
         </ul>
         {
           session && (
