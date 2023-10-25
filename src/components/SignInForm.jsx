@@ -92,7 +92,7 @@ const SignInForm = () => {
 
         <button
           type="submit"
-          className="bg-naranja w-full py-2 text-white rounded-lg text-xl font-josefin hover:scale-105 ease-out duration-300 hover:shadow-md hover:bg-naranja/90"
+          className="bg-naranja/90 hover:bg-naranja w-full py-2 text-white rounded-lg text-xl font-josefin ease-out duration-300 hover:shadow-md"
         >
           Iniciar Sesión
         </button>
@@ -104,7 +104,7 @@ const SignInForm = () => {
         </div>      
       </form>
 
-      <button onClick={() => signIn('google', {callbackUrl: '/'})} className="w-full bg-black/75 flex items-center justify-center gap-4 py-2 text-white font-josefin text-xl mt-3 rounded-lg hover:scale-105 ease-out duration-300 hover:shadow-md">
+      <button className="w-full bg-black/75 flex items-center justify-center gap-4 py-2 text-white font-josefin text-xl mt-3 rounded-lg ease-out duration-300 hover:shadow-md hover:bg-black/90">
         <FcGoogle size={28} />
         <h1>Inicia Sesión con Google</h1>
       </button>

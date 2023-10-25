@@ -118,7 +118,7 @@ const RegisterForm = () => {
           />
           <div
             onClick={handleSelectImage}
-            className="rounded-full w-[140px] h-[140px] border-2 overflow-hidden"
+            className="rounded-full w-[140px] h-[140px] border-2 overflow-hidden border-naranja/60  hover:border-naranja ease-out duration-300 hover:cursor-pointer hover:shadow-lg"
           >
             {selectedImage && (
               <Image
@@ -193,7 +193,7 @@ const RegisterForm = () => {
       <button
         type="submit"
         disabled={loading}
-        className="bg-naranja w-full py-2 text-white rounded-lg text-xl font-josefin hover:scale-105 ease-out duration-300 hover:shadow-md hover:bg-naranja/90"
+        className="bg-naranja/90 hover:bg-naranja w-full py-2 text-white rounded-lg text-xl font-josefin ease-out duration-300 hover:shadow-md"
       >
         {loading ? (
           <Spinner />

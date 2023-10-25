@@ -35,7 +35,7 @@ const FilaJuegos = ({titulo, juegos}) => {
         </div>
 
         <div className='flex w-full justify-center mt-5 text-white '>
-          <div className='w-full text-center md:w-[40%] lg:w-[25%] bg-naranja hover:scale-110 hover:shadow-lg hover:cursor-pointer ease-out duration-300 px-3 py-2 rounded-md'>
+          <div className='w-full text-center md:w-[40%] lg:w-[25%] bg-naranja/90 hover:bg-naranja hover:shadow-lg hover:cursor-pointer ease-out duration-300 px-3 py-2 rounded-md'>
             <Link href={'/juegos'} className='font-josefin text-xl font-bold'>Ver más</Link>
           </div>
         </div>
