@@ -3,14 +3,14 @@ import User from "@/models/User";
 import { NextResponse } from "next/server";
 
 const POST = async (req) => {
-
   const { email } = await req.json();
+  
   try {
     await connectDB();
-    const user = await User.findOne({email});
+    const user = await User.findOne({email}).select('_id');        
 
     if(!user) {
-      return NextResponse.json({message: 'User not found'}, {status: 404})
+      return NextResponse.json({message: 'Email no registrado'}, {status: 404})
     }
 
     return NextResponse.json({user}, {status: 201})

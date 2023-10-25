@@ -28,9 +28,9 @@ const RegisterForm = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ nombre, email, password, address }),
-      });
+      });      
 
-      if(res.status === 201) {        
+      if(res.ok) {        
         setNombre("");
         setEmail("");
         setPassword("");
@@ -49,7 +49,7 @@ const RegisterForm = () => {
     <form onSubmit={handleSubmit} className="w-full mt-8 border rounded-lg px-4 md:px-5 py-4 lg:py-6 max-w-[550px] shadow-md">
       {
         error && (
-          <div className="bg-red-500 text-white rounded-lg px-3 py-2 mb-4 flex items-center">
+          <div className="bg-red-500 text-white rounded-lg px-3 py-2 mb-4 flex items-center shadow-lg">
             <p className="font-josefin">{error}</p>
           </div>
         )

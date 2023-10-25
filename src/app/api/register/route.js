@@ -11,7 +11,7 @@ const POST = async (req) => {
      const user = await User.findOne({email});
 
      if(user) {
-       return NextResponse.json({message: 'Usuario ya existe'}, {status: 400})
+       return NextResponse.json({message: 'Email ya registrado'}, {status: 400})
      }
 
      const hashedPassword = await bcrypt.hash(password, 10);

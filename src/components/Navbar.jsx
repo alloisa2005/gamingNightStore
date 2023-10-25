@@ -39,6 +39,13 @@ const Navbar = () => {
             Juegos
           </Link>
           
+          <Link
+            href={"/datos"}
+            className="cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
+          >
+            Datos
+          </Link>
+
           <SignInButton />
         </ul>
 
@@ -71,6 +78,13 @@ const Navbar = () => {
               className="border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer"
             >
               Juegos
+            </Link>
+            <Link
+              href={"/datos"}
+              onClick={handleNavbar}
+              className="border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer"
+            >
+              Datos
             </Link>
 
             <SignInButton dispositivo='mobile'/>
