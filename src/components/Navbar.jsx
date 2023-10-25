@@ -72,13 +72,15 @@ const Navbar = () => {
             >
               Juegos
             </Link>
-            <Link
+
+            <SignInButton dispositivo='mobile'/>
+            {/* <Link
               href={"/signin"}
               onClick={handleNavbar}
               className="border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer"
             >
               Iniciar Sesión
-            </Link>
+            </Link> */}
           </ul>
         </div>
       </nav>

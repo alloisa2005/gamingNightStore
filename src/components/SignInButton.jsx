@@ -1,10 +1,10 @@
 "use client";
 
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 
-const SignInButton = () => {
+const SignInButton = ({dispositivo='desktop'}) => {
   const { data: session, status } = useSession();
   return (
     <>
