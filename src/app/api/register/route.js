@@ -5,7 +5,7 @@ import User from "@/models/User";
 
 const POST = async (req) => {  
   try {
-    const { email, password, address, nombre } = await req.json();    
+    const { email, password, address, nombre, imgUrl } = await req.json();    
     
      await connectDB();
      const user = await User.findOne({email});
@@ -15,7 +15,7 @@ const POST = async (req) => {
      }
 
      const hashedPassword = await bcrypt.hash(password, 10);
-     await User.create({name:nombre, address, email, password: hashedPassword});
+     await User.create({name:nombre, address, email, password: hashedPassword, image: imgUrl});
 
     return NextResponse.json({message: 'Usuario creado'}, {status: 201})
 

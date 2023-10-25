@@ -3,11 +3,14 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const RegisterForm = () => {
 
   const router = useRouter();
 
+  const [selectedImage, setSelectedImage] = useState('/images/click.png');
+  const [fileImg, setFileImg] = useState(null); 
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,18 +19,39 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!email || !password || !nombre || !address) {
-      setError("Todos los campos son obligatorios");
-      return;
-    }
+    
+    // if(!email || !password || !nombre || !address) {
+    //   setError("Todos los campos son obligatorios");
+    //   return;
+    // }
 
     try {
+      if((fileImg.size/1024/1024) > 1.2) {
+        setError("La imagen no debe pesar más de 1.2MB");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', fileImg);
+
+      const responseImg = await fetch('/api/upload', {
+        method: 'POST',        
+        body: formData
+      });
+
+      if(!responseImg.ok) {
+        setError("Error al subir la imagen");
+        return;
+      }
+
+      const {imgUrl} = await responseImg.json();
+
       const res = await fetch("/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ nombre, email, password, address }),
+        body: JSON.stringify({ nombre, email, password, address, imgUrl }),
       });      
 
       if(res.ok) {        
@@ -40,8 +64,29 @@ const RegisterForm = () => {
         const data = await res.json();
         setError(data.message);
       }
+      
     } catch (error) {
       setError(error.message);
+    }
+  };
+
+  const handleSelectImage = () => {
+    setError("");
+    document.getElementById('fileInput').click();
+  };
+
+  const handleSelectedImage = (e) => {
+    const file = e.target.files[0];
+    setFileImg(file);
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        setSelectedImage(e.target.result);
+      };
+
+      reader.readAsDataURL(file);
     }
   };
 
@@ -53,7 +98,17 @@ const RegisterForm = () => {
             <p className="font-josefin">{error}</p>
           </div>
         )
-      }
+      }      
+      <div className="flex flex-col items-center mb-4">
+        <div className="flex justify-center mb-1">
+          <input id="fileInput" type="file" accept="image/*" hidden onChange={handleSelectedImage} />
+          <div onClick={handleSelectImage} className="rounded-full w-[140px] h-[140px] border-2 overflow-hidden">
+            {selectedImage && (<Image src={selectedImage} width={140} height={140} className="object-cover w-full h-full " alt="Img User" />)}
+          </div>        
+        </div>
+        <p className="font-josefin text-sm font-bold">Seleccione Imagen</p>
+      </div>  
+
       <div className="flex flex-col">
         <label className="select-none font-josefin text-lg font-bold">Nombre</label>
         <input
@@ -65,6 +120,7 @@ const RegisterForm = () => {
           className="outline-none font-josefin text-lg border-2 px-2 py-1 rounded-md"
         />
       </div>
+      
 
       <div className="flex flex-col my-6">
         <label className="select-none font-josefin text-lg font-bold">Email</label>
