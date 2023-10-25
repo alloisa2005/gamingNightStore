@@ -8,10 +8,14 @@ import { signIn } from 'next-auth/react'
 const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password);
+    if(!email || !password ) {
+      setError("Ingresa tu email y contraseña");
+      return;
+    }
   };
 
   return (
@@ -19,6 +23,14 @@ const SignInForm = () => {
       onSubmit={handleSubmit}
       className="w-full mt-8 border rounded-lg px-4 md:px-5 py-4 lg:py-6 max-w-[550px] shadow-md"
     >
+      {
+        error && (
+          <div className="bg-red-500 text-white rounded-lg px-3 py-2 mb-4 flex items-center">
+            <p className="font-josefin">{error}</p>
+          </div>
+        )
+      }
+
       <div className="flex flex-col">
         <label className="select-none font-josefin text-lg font-bold">
           Email
@@ -26,6 +38,7 @@ const SignInForm = () => {
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onFocus={() => setError('')}
           type="email"
           placeholder="john@gmail.com"
           className="outline-none font-josefin text-lg border-2 px-2 py-1 rounded-md"
@@ -39,6 +52,7 @@ const SignInForm = () => {
         <input
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onFocus={() => setError('')}
           type="password"
           placeholder="Password"
           className="outline-none font-josefin text-lg border-2 px-2 py-1 rounded-md"
@@ -65,7 +79,7 @@ const SignInForm = () => {
 
       <div className="flex items-center justify-end gap-3 mt-4">
         <p>¿No tienes una cuenta?</p>
-        <Link href="#" className="text-blue-500 border-b border-blue-500 hover:text-naranja hover:border-naranja ease-out duration-300">Regístrate</Link>
+        <Link href={"/register"} className="text-blue-500 border-b border-blue-500 hover:text-naranja hover:border-naranja ease-out duration-300">Regístrate</Link>
       </div>
     </form>
   );
