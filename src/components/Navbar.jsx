@@ -37,6 +37,13 @@ const Navbar = () => {
             Juegos
           </Link>
 
+          <Link
+            href={"/juegos"}
+            className="cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
+          >
+            Próximamente
+          </Link>
+
           <SignInButton />
         </ul>
 
@@ -69,7 +76,16 @@ const Navbar = () => {
               className="border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer"
             >
               Juegos
-            </Link>            
+            </Link>    
+
+            <Link
+              href={"/juegos"}
+              onClick={handleNavbar}
+              className="border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer"
+            >
+              Próximamente
+            </Link> 
+
             <SignInButton dispositivo='mobile' handleNavbar={handleNavbar}/> 
 
             <h1 className="border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer">Contáctenos</h1>           
