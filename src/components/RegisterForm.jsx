@@ -5,9 +5,11 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Spinner from "./Spinner";
+import { useSession } from "next-auth/react";
 
 const RegisterForm = () => {
   const router = useRouter();
+  const {data: session} = useSession();
 
   const [selectedImage, setSelectedImage] = useState("/images/click.png");
   const [fileImg, setFileImg] = useState(null);
@@ -96,6 +98,8 @@ const RegisterForm = () => {
       reader.readAsDataURL(file);
     }
   };
+
+  if(session?.user?.email) router.push("/");
 
   return (
     <form

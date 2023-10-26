@@ -3,20 +3,25 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from "next/navigation";
+import Spinner from "./Spinner";
 
 const SignInForm = () => {
   const router = useRouter();
+  const {data: session} = useSession();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if(!email || !password ) {
+      setLoading(false);
       setError("Ingresa tu email y contraseña");
       return;
     }
@@ -32,6 +37,7 @@ const SignInForm = () => {
 
       if(!res.ok) {        
         const data = await res.json();
+        setLoading(false);
         setError(data.message);
         return;
       }
@@ -39,6 +45,7 @@ const SignInForm = () => {
       const resSignIn = await signIn('credentials', {email, password, redirect: false});
 
       if(resSignIn.error){
+        setLoading(false);
         setError('Email o password incorrectos');
         return;
       }
@@ -49,6 +56,9 @@ const SignInForm = () => {
       setError(error.message);
     }
   };
+
+  if(session?.user?.email) router.push("/");
+  
 
   return (
     <div className="w-full mt-8 border rounded-lg px-4 md:px-5 py-4 lg:py-6 max-w-[550px] shadow-md">
@@ -92,9 +102,12 @@ const SignInForm = () => {
 
         <button
           type="submit"
+          disabled={loading}
           className="bg-naranja/90 hover:bg-naranja w-full py-2 text-white rounded-lg text-xl font-josefin ease-out duration-300 hover:shadow-md"
         >
-          Iniciar Sesión
+          {
+            loading ? (<Spinner />) : 'Iniciar Sesión'
+          }
         </button>
 
         <div className="mt-3 flex items-center gap-6">

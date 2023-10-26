@@ -4,12 +4,10 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { RiMenu4Line } from "react-icons/ri";
 import { CgClose } from "react-icons/cg";
-import { useSession, signOut } from "next-auth/react";
-import Image from "next/image";
+import { BsWhatsapp, BsFacebook, BsInstagram } from "react-icons/bs";
 import SignInButton from "./SignInButton";
 
-const Navbar = () => {
-  const { data: session, status } = useSession();
+const Navbar = () => {  
   const [navbar, setNavbar] = useState(false);
 
   const handleNavbar = () => {
@@ -72,7 +70,14 @@ const Navbar = () => {
             >
               Juegos
             </Link>            
-            <SignInButton dispositivo='mobile'/>            
+            <SignInButton dispositivo='mobile' handleNavbar={handleNavbar}/> 
+
+            <h1 className="border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer">Contáctenos</h1>           
+            <div className="w-full flex items-center justify-center gap-16">
+              <BsWhatsapp size={35}/>
+              <BsFacebook size={35}/>
+              <BsInstagram size={35}/>
+            </div>
           </ul>
         </div>
       </nav>
