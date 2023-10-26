@@ -3,7 +3,7 @@ import React from 'react'
 
 const Hero = () => {
   return (    
-    <div className='w-full h-[670px] md:h-[620px] lg:h-[600px] relative'>
+    <div className='w-full h-[670px] md:h-[650px] lg:h-[650px] relative'>
       <Image src={'/images/bg.jpg'} alt='Logo GNS' width={800} height={800} quality={100}
           priority className='w-full h-full object-cover'/>
       

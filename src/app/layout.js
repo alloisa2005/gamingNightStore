@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import Providers from '@/components/Providers'
 import { Inter, Josefin_Sans, Russo_One } from 'next/font/google'
@@ -18,7 +19,7 @@ export default function RootLayout({ children }) {
       <body className={`${josefin.variable} ${russo.variable} font-sans`}>
         <Providers>
           <Navbar />
-          {children}        
+          {children}            
         </Providers>
       </body>
     </html>
