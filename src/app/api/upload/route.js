@@ -20,7 +20,7 @@ const POST = async (req) => {
     const buffer = Buffer.from(await bytes); 
 
     const response = await new Promise((resolve, reject) => {
-      cloudinary.uploader.upload_stream({folder: 'gns-users'},  (err, result) =>{
+      cloudinary.uploader.upload_stream({folder: 'gns/gns-users'},  (err, result) =>{
         if(err) {
           reject(err);
         }       

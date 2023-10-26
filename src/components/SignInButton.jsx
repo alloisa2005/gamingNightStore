@@ -10,7 +10,7 @@ const SignInButton = ({handleNavbar, dispositivo='desktop'}) => {
   return (
     <>
       {session ? (
-        <div className="w-full border-b-2 lg:border-b-0 flex items-center justify-end border-slate-500">          
+        <div className="w-full border-b-2 lg:border-b-0 flex items-center justify-end border-slate-500 lg:border-transparent">          
           <Image
             src={session.user.image}
             width={30}
@@ -24,7 +24,7 @@ const SignInButton = ({handleNavbar, dispositivo='desktop'}) => {
         <Link
           href={"/signin"}
           onClick={handleNavbar}
-          className="border-b-2 border-slate-500 w-full text-right cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
+          className="border-b-2 lg:border-b-0 border-slate-500 w-full text-right cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
         >
           Iniciar Sesión
         </Link>
