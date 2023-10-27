@@ -36,13 +36,14 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async session({session, user}) {      
+    async session({session, token, user}) {                  
       const email = session.user.email;
-
+      
       const userSearch = await User.findOne({email}).select('-password');
       session.user.address = userSearch.address;
       session.user.isAdmin = userSearch.isAdmin;
-      session.user.id = userSearch._id;
+      session.user.id = userSearch._id;      
+
       return session;
     },
   },
