@@ -57,8 +57,7 @@ const SignInForm = () => {
     }
   };
 
-  if(session?.user?.email) router.push("/");
-  
+  if(session?.user?.email) router.push("/");  
 
   return (
     <div className="w-full mt-8 border rounded-lg px-4 md:px-5 py-4 lg:py-6 max-w-[550px] shadow-md">

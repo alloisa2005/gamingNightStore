@@ -1,7 +1,6 @@
-import React from 'react'
-import { BiSearchAlt } from 'react-icons/bi'
 
-const Juegos = () => {
+const Juegos = () => {  
+
   return (
     <div className='contenedor'>
       <h1>JUEGOS</h1>

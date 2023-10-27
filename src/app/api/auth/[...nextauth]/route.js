@@ -42,6 +42,7 @@ export const authOptions = {
       const userSearch = await User.findOne({email}).select('-password');
       session.user.address = userSearch.address;
       session.user.isAdmin = userSearch.isAdmin;
+      session.user.id = userSearch._id;
       return session;
     },
   },

@@ -1,6 +1,16 @@
+import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation'
 import React from 'react'
+import { authOptions } from '../api/auth/[...nextauth]/route'
 
-const Cart = () => {
+const Cart = async () => {
+
+  const session = await getServerSession(authOptions)  
+
+  if(!session) {
+    redirect('/signin')
+  }
+
   return (
     <div className='contenedor'>
       <p className='font-josefin text-3xl w-full border-b-2 border-b-naranja'>Mi Carrito</p>
