@@ -3,7 +3,6 @@
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { RiShoppingCartLine } from "react-icons/ri";
 
 const SignInButton = ({handleNavbar, dispositivo='desktop'}) => {
   const { data: session } = useSession();
@@ -11,7 +10,7 @@ const SignInButton = ({handleNavbar, dispositivo='desktop'}) => {
   return (
     <>
       {session ? (
-        <div className="w-full flex items-center justify-end gap-2 border-b-2 lg:border-b-0 border-slate-500 lg:border-transparent">          
+        <div className="group relative w-full flex items-center justify-end gap-2 border-b-2 lg:border-b-0 border-slate-500 lg:border-transparent">          
           <Image
             src={session.user.image}
             width={30}
@@ -20,12 +19,17 @@ const SignInButton = ({handleNavbar, dispositivo='desktop'}) => {
             onClick={() => signOut()}
             className="mb-3 w-11 h-11 object-cover rounded-full border-2 border-white hover:scale-110 hover:cursor-pointer hover:border-naranja hover:border-2 ease-out duration-300"
           />
-          <Link href={'/cart'} onClick={handleNavbar} className="relative hover:cursor-pointer group">
-            <RiShoppingCartLine size={27} className='group-hover:text-naranja ease-out duration-300'/>
-            <div className="bg-gray-500 border-2 border-gray-200 absolute -top-2 -right-4 w-5 h-5 flex items-center justify-center rounded-full">
-              <p className="text-[13px] text-white ease-out duration-300 p-1">0</p>
-            </div>
-          </Link>
+          <div className="hidden group-hover:lg:block absolute -left-2 top-12  bg-white px-3 py-2 rounded-md w-[140px]">
+            <Link href={'/cart'} className="flex items-center justify-between mb-2">
+              <p className="text-black text-lg hover:text-naranja hover:scale-105 hover:cursor-pointer ease-out duration-300">Carrito</p>
+              <div className="flex items-center justify-center w-5 h-5 bg-red-500 rounded-full">
+                <p className="text-white text-[15px]">1</p>
+              </div>              
+            </Link>
+            <p className="mb-2 text-black text-lg hover:text-naranja hover:scale-105 hover:cursor-pointer ease-out duration-300">Mis Compras</p>
+            <p className="mb-2 text-black text-lg hover:text-naranja hover:scale-105 hover:cursor-pointer ease-out duration-300">Mi Cuenta</p>
+            <p onClick={() => signOut()} className="mb-2 text-black text-lg hover:text-naranja hover:scale-105 hover:cursor-pointer ease-out duration-300">Cerrar Sesión</p>
+          </div>          
         </div>
       ) : (
         <Link
