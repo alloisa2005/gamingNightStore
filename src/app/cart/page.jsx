@@ -14,7 +14,7 @@ const Cart = async () => {
 
   return (
     <div className='contenedor'>
-      <p className='font-josefin text-3xl w-full border-b-2 border-b-naranja'>Mi Carrito</p>
+      <p className='titulo'>Mi Carrito</p>
 
       <div className='mt-3 w-full flex flex-col md:flex-row-reverse gap-4 md:gap-2 font-josefin'>
         <div className='flex-1 border p-2 rounded-md shadow-md'>

@@ -7,3 +7,7 @@
 .contenedor {
   @apply max-w-[1350px] h-full mx-auto px-4 my-4 
 }
+
+.titulo {
+  @apply font-josefin text-3xl w-full border-b-2 border-b-naranja
+}

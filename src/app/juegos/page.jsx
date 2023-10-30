@@ -3,7 +3,7 @@ const Juegos = () => {
 
   return (
     <div className='contenedor'>
-      <h1>JUEGOS</h1>
+      <h1 className="titulo">Juegos</h1>
     </div>
   )
 }

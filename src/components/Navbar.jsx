@@ -38,7 +38,7 @@ const Navbar = () => {
           </Link>
 
           <Link
-            href={"/juegos"}
+            href={"/proximamente"}
             className="cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
           >
             Próximamente
@@ -79,7 +79,7 @@ const Navbar = () => {
             </Link>    
 
             <Link
-              href={"/juegos"}
+              href={"/proximamente"}
               onClick={handleNavbar}
               className="border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer"
             >
