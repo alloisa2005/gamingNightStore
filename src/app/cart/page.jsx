@@ -18,7 +18,7 @@ const Cart = async () => {
 
       <div className='mt-3 w-full flex flex-col md:flex-row-reverse gap-4 md:gap-2 font-josefin'>
         <div className='flex-1 border p-2 rounded-md shadow-md'>
-          <p className='text-lg italic'>Resumen</p>          
+          <p className='text-lg italic'>Resumen de Compra</p>          
         </div>
 
         <div className='w-full md:w-[70%] border p-2 rounded-md shadow-md flex flex-col gap-3 py-4'>             

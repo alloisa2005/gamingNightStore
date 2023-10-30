@@ -3,9 +3,9 @@ import { BsFillTrash3Fill } from 'react-icons/bs'
 
 const CartItem = () => {
   return (
-    <div className="border flex items-center p-2 rounded-lg gap-3 w-full">
+    <div className="border hover:shadow-md flex items-center p-2 rounded-lg gap-3 w-full ease-out duration-300">
       {/* Acá es la imagen del juego */}
-      <div className="bg-green-300 h-[100px] w-[120px]"></div>
+      <div className="bg-green-300 h-[100px] w-[120px] hover:cursor-pointer"></div>
 
       <div className="h-full w-full flex flex-col justify-center">
         <p className="text-lg font-bold">Nombre del juego</p>
