@@ -6,8 +6,13 @@ import { RiMenu4Line } from "react-icons/ri";
 import { CgClose } from "react-icons/cg";
 import { BsWhatsapp, BsFacebook, BsInstagram } from "react-icons/bs";
 import SignInButton from "./SignInButton";
+import Flags from "./Flags";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {  
+
+  const { spanish } = useSelector((state) => state.language);
+
   const [navbar, setNavbar] = useState(false);
 
   const handleNavbar = () => {
@@ -28,23 +33,25 @@ const Navbar = () => {
             href={"/"}
             className="cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
           >
-            Inicio
+            {spanish ? "Inicio" : "Home"}
           </Link>
           <Link
             href={"/juegos"}
             className="cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
           >
-            Juegos
+            {spanish ? "Juegos" : "Games"}
           </Link>
 
           <Link
             href={"/proximamente"}
             className="cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
           >
-            Próximamente
+            {spanish ? "Próximamente" : "Coming Soon"}
           </Link>
 
           <SignInButton />
+
+          <Flags />
         </ul>
 
         <div className="lg:hidden cursor-pointer z-20" onClick={handleNavbar}>

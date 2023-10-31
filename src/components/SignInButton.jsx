@@ -3,14 +3,18 @@
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const SignInButton = ({ handleNavbar, dispositivo = "desktop" }) => {
+
+  const { spanish } = useSelector((state) => state.language);
+
   const { data: session } = useSession();
 
   return (
     <>
       {session ? (
-        <div className="group relative w-full flex items-center justify-end gap-2 border-b-2 lg:border-b-0 border-slate-500 lg:border-transparent">
+        <div className="group relative  flex items-center justify-end gap-2 border-b-2 lg:border-b-0 border-slate-500 lg:border-transparent">
           <Image
             src={session.user.image}
             width={30}
@@ -25,29 +29,29 @@ const SignInButton = ({ handleNavbar, dispositivo = "desktop" }) => {
               className="flex items-center justify-between mb-2"
             >
               <p className="text-black text-lg hover:text-naranja hover:scale-105 hover:cursor-pointer ease-out duration-300">
-                Carrito
+                {spanish ? "Mi Carrito" : "My Cart"}
               </p>
               <div className="flex items-center justify-center w-5 h-5 bg-red-500 rounded-full">
                 <p className="text-white text-[15px]">1</p>
               </div>
             </Link>
             <p className="mb-2 text-black text-lg hover:text-naranja hover:scale-105 hover:cursor-pointer ease-out duration-300">
-              Mis Compras
+              {spanish ? "Mis Compras" : "My Orders"}
             </p>
             {session?.user?.isAdmin ? (
               <p className="mb-2 text-black text-lg hover:text-naranja hover:scale-105 hover:cursor-pointer ease-out duration-300">
-                Administrador
+                Admin
               </p>
             ) : (
               <p className="mb-2 text-black text-lg hover:text-naranja hover:scale-105 hover:cursor-pointer ease-out duration-300">
-                Mi Cuenta
+                {spanish ? "Mi Perfil" : "My Profile"}
               </p>
             )}
             <p
               onClick={() => signOut()}
               className="mb-2 text-black text-lg hover:text-naranja hover:scale-105 hover:cursor-pointer ease-out duration-300"
             >
-              Cerrar Sesión
+              {spanish ? "Cerrar Sesión" : "Sign Out"}
             </p>
           </div>
         </div>
@@ -55,9 +59,9 @@ const SignInButton = ({ handleNavbar, dispositivo = "desktop" }) => {
         <Link
           href={"/signin"}
           onClick={handleNavbar}
-          className="border-b-2 lg:border-b-0 border-slate-500 w-full text-right cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
+          className="border-b-2 lg:border-b-0 border-slate-500  text-right cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
         >
-          Iniciar Sesión
+          {spanish ? "Iniciar Sesión" : "Sign In"}
         </Link>
       )}
     </>
