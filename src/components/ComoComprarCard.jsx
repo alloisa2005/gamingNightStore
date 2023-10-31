@@ -3,7 +3,7 @@ import React from "react";
 
 export const ComoComprarCard = ({foto, titulo, subTitulo, reverse=false}) => {
   return (
-    <div className={`flex flex-col items-center justify-around ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} w-full my-5 bg-black/80 py-6 rounded-lg shadow-lg`}>
+    <div className={`px-4 flex flex-col items-center justify-around ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} w-full my-5 bg-black/80 py-6 rounded-lg shadow-lg`}>
       <div className="my-4">
         <div className="flex justify-center items-center gap-3">
           <p className="h-4 w-4 bg-naranja animate-pulse rounded-full"></p>

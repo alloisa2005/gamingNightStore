@@ -6,9 +6,9 @@ const Footer = () => {
   const anio = new Date().getFullYear();
 
   return (
-    <div className='bg-primario'>
-      <div className='contenedor py-3 text-white font-poppins flex flex-col md:flex-row justify-center md:justify-between items-center gap-4'>      
-        <h1 className='text-lg'>Copyright &copy; gamingNightStore {anio}</h1>
+    <div className='bg-black/80'>
+      <div className='contenedor py-3 text-white font-poppins flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 font-josefin'>      
+        <h1 className='text-lg'>Copyright &copy; <span className='font-bold text-xl'>gamingNightStore</span> {anio}</h1>
         <div className='flex items-center gap-3'>
           <h1>Desarrollado por <span className='font-bold'>aallois</span></h1>
           <BsInstagram size={20} className='text-white cursor-pointer hover:text-red-500 ease-out duration-300'/>

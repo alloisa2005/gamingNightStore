@@ -11,6 +11,7 @@ const russo = Russo_One({ subsets: ['latin'], variable: '--font-russo', weight: 
 export const metadata = {
   title: 'Gaming Night Store',
   description: 'Developed by aallois',
+  keywords: ['gaming, store, aallois, nextjs, reactjs, tailwindcss'],
 }
 
 export default function RootLayout({ children }) {
@@ -19,7 +20,8 @@ export default function RootLayout({ children }) {
       <body className={`${josefin.variable} ${russo.variable} font-sans`}>
         <Providers>
           <Navbar />
-          {children}            
+          {children}  
+          <Footer />          
         </Providers>
       </body>
     </html>
