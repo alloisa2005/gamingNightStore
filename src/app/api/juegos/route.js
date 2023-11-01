@@ -25,11 +25,11 @@ const GET = async (req, res) => {
 
 const POST = async (req, res) => {    
   
-  const {nombre, description, poster, image1, image2, image3, image4, price, category} = await req.json();
+  const {nombre, description, boxImage, poster, image1, image2, image3, image4, price, category} = await req.json();
 
   try {    
     await connectDB();   
-    const juego = await Juego.create({nombre, description, poster, image1, image2, image3, image4, price, category});
+    const juego = await Juego.create({nombre, description, boxImage, poster, image1, image2, image3, image4, price, category});
     return NextResponse.json(juego, {status: 201})
   } catch (error) {
     return NextResponse.json({msg: `${error.message}`}, {status: 500})

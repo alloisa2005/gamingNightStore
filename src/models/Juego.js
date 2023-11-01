@@ -13,6 +13,9 @@ const juegoSchema = new mongoose.Schema(
       required: [true, "Ingrese descripción del juego"],
       trim: true,
     },
+    boxImage: {
+      type: String,      
+    },
     poster: {
       type: String,
     }, 

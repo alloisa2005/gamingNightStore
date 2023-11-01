@@ -1,17 +1,19 @@
-import React from 'react'
+import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation';
+import { authOptions } from '../api/auth/[...nextauth]/route'
 
-const AdminPage = () => {
+
+const AdminPage = async () => {
+
+  const session = await getServerSession(authOptions)    
+
+  if(!session?.user?.isAdmin) {
+    redirect('/')
+  }
+
   return (
-    <div className='contenedor my-3'>
-      <h1 className='titulo'>Menú Administrador</h1>
-
-      <div className='w-full bg-red-200 mt-4 flex items-center justify-around'>
-        <div className='flex items-center'>
-
-        </div>
-        
-        <div></div>
-      </div>
+    <div className='w-full bg-red-600'>            
+      JAJA222
     </div>
   )
 }
