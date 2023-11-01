@@ -8,18 +8,17 @@ const JuegoCard = ({ juego }) => {
     >
       <Image
         className="object-cover w-full h-[200px]"
-        src={juego.imagen}
+        src={juego.poster}
         alt={juego.nombre}
         width={200}
         height={200}
       />
       <div className="mt-2 p-2">
         <p className="font-josefin font-bold text-lg">
-          {juego.titulo}
-        </p>
-        <p className="font-josefin text-sm uppercase font-bold italic text-gray-600">{juego.estado}</p>
+          {juego.nombre}
+        </p>        
         <p className="font-josefin text-sm text-gray-600">
-          Precio ($): <span className="text-lg font-josefin font-bold text-naranja">{juego.precio}</span> 
+          Precio ($): <span className="text-xl font-josefin font-bold text-naranja">{juego.price}</span> 
         </p>
       </div>
     </div>

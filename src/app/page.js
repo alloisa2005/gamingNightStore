@@ -15,11 +15,11 @@ export default async function Home() {
     <>
       <Hero />
            
-      {/* <FilaJuegos titulo={'Recién agregados'} juegos={latestJuegos} />
+      <FilaJuegos titulo={'Recién agregados'} query={'latest'} />
 
-      <FilaJuegos titulo={'nuevos'} juegos={nuevosJuegos}/>
+      <FilaJuegos titulo={'destacados'} />
 
-      <FilaJuegos titulo={'usados'} juegos={usadosJuegos}/> */}
+      {/* <FilaJuegos titulo={'usados'} juegos={usadosJuegos}/> */}
 
       <ComoComprar />
 

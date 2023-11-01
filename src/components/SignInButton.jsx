@@ -39,9 +39,9 @@ const SignInButton = ({ handleNavbar, dispositivo = "desktop" }) => {
               {spanish ? "Mis Compras" : "My Orders"}
             </p>
             {session?.user?.isAdmin ? (
-              <p className="mb-2 text-black text-lg hover:text-naranja hover:scale-105 hover:cursor-pointer ease-out duration-300">
+              <Link href={'/admin'} className="mb-2 text-black text-lg hover:text-naranja hover:scale-105 hover:cursor-pointer ease-out duration-300">
                 Admin
-              </p>
+              </Link>
             ) : (
               <p className="mb-2 text-black text-lg hover:text-naranja hover:scale-105 hover:cursor-pointer ease-out duration-300">
                 {spanish ? "Mi Perfil" : "My Profile"}

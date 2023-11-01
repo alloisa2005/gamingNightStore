@@ -1,13 +1,21 @@
 import { connectDB } from "@/db/connectDB"
 import Juego from "@/models/Juego";
-import User from "@/models/User";
 import { NextResponse } from "next/server"
 
-const GET = async (req, res) => {    
-  await connectDB();   
+const GET = async (req, res) => {        
+  
+  // Leo el query de la url, si es latest, devuelvo solo los 4 ultimos juegos agregados
+  const url = new URL(req.url);
+  const query = url.searchParams.get('query');  
 
   try {    
-    const juegos = await Juego.find();
+    await connectDB();   
+    let juegos;
+    if(query === 'latest') {
+      juegos = await Juego.find().sort({createdAt: -1}).limit(4);
+    }else{
+      juegos = await Juego.find().sort({createdAt: -1});
+    }
     return NextResponse.json(juegos, {status: 201})
   } catch (error) {
     return NextResponse.json({msg: 'Error'}, {status: 500})
@@ -15,4 +23,18 @@ const GET = async (req, res) => {
 
 }
 
-export { GET }
+const POST = async (req, res) => {    
+  
+  const {nombre, description, poster, image1, image2, image3, image4, price, category} = await req.json();
+
+  try {    
+    await connectDB();   
+    const juego = await Juego.create({nombre, description, poster, image1, image2, image3, image4, price, category});
+    return NextResponse.json(juego, {status: 201})
+  } catch (error) {
+    return NextResponse.json({msg: `${error.message}`}, {status: 500})
+  }
+
+}
+
+export { GET, POST }

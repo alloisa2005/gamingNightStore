@@ -13,9 +13,31 @@ const juegoSchema = new mongoose.Schema(
       required: [true, "Ingrese descripción del juego"],
       trim: true,
     },
-    image: {
+    poster: {
       type: String,
-    },      
+    }, 
+    image1: {
+      type: String,
+    },     
+    image2: {
+      type: String,
+    }, 
+    image3: {
+      type: String,
+    }, 
+    image4: {
+      type: String,
+    },  
+    price: {
+      type: Number, 
+      required: [true, "Ingrese precio del juego"],      
+      default: 0.0,
+    },
+    category: {
+      type: String,
+      required: [true, "Ingrese categoría del juego"],      
+      trim: true,
+    },
   },
   { timestamps: true }
 );
