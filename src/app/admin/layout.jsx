@@ -9,7 +9,7 @@ const AdminLayout = ({ children }) => {
           <div className="w-full mt-3 flex flex-col md:flex-row gap-2">
               <AdminItems />
 
-              <div className="flex-1">
+              <div className="flex-1 border p-2">
                 {children}
               </div>
           </div>
