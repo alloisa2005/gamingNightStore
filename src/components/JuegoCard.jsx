@@ -1,3 +1,4 @@
+import { separadorMiles } from "@/utils/separadorMiles";
 import Image from "next/image";
 import React from "react";
 
@@ -18,7 +19,7 @@ const JuegoCard = ({ juego }) => {
           {juego.nombre}
         </p>        
         <p className="font-josefin text-sm text-gray-600">
-          Precio ($): <span className="text-xl font-josefin font-bold text-naranja">{juego.price}</span> 
+          Precio ($): <span className="text-xl font-josefin font-bold text-naranja">{separadorMiles(juego.price)}</span> 
         </p>
       </div>
     </div>

@@ -16,7 +16,7 @@ export default async function Home() {
            
       <FilaJuegos titulo={'Recién agregados'} query={'latest'} />
 
-      <FilaJuegos titulo={'destacados'} />
+      {/* <FilaJuegos titulo={'destacados'} /> */}
 
       {/* <FilaJuegos titulo={'usados'} juegos={usadosJuegos}/> */}
 
