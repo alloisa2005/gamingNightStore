@@ -4,45 +4,63 @@ import { useState } from "react";
 import { FaCloudUploadAlt } from 'react-icons/fa'
 import Spinner from "./Spinner";
 
-const NuevoJuegoForm = () => {
-  const [titulo, setTitulo] = useState("");
-  const [categoria, setCategoria] = useState("");
-  const [descripcion, setDescripcion] = useState("");
-  const [boxImage, setBoxImage] = useState("");
-  const [posterImage, setPosterImage] = useState("");
-  const [image1, setImage1] = useState("");
-  const [image2, setImage2] = useState("");
-  const [image3, setImage3] = useState("");
-  const [image4, setImage4] = useState("");
+const NuevoJuegoForm = () => {      
+
+  const [juego, setJuego] = useState({
+    titulo: '',    categoria: '',    descripcion: '',    boxImage: '', price: 0, 
+    posterImage: '',    image1: '',    image2: '',    image3: '',    image4: '',
+  });
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);  
 
-  const handleCategoria = (e) => setCategoria(e.target.value);
+  const handleInput = (e) => {
+    setJuego({
+      ...juego,
+      [e.target.name]: e.target.value
+    })
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();    
+    
     setLoading(true);
 
-    if(!titulo || !categoria || !descripcion) {
+    if(!juego.titulo || !juego.categoria || !juego.descripcion) {
       setLoading(false);
       setError('Título, categoría y descripción son obligatorios');
       return;
     }
 
-    if(!boxImage || !posterImage) {
+    if(isNaN(juego.price) || juego.price < 0) {
+      setLoading(false);
+      setError('Ingrese un precio válido');
+      return;
+    }
+
+    if(!juego.boxImage || !juego.posterImage) {
       setLoading(false);
       setError('Box Image y Poster Image son obligatorios');
       return;
     }
 
-    if(!image1 && !image2 && !image3 && !image4) {
+    if(!juego.image1 && !juego.image2 && !juego.image3 && !juego.image4) {
       setLoading(false);
       setError('Al menos debe ingresar una imágen de vista');
       return;
     }
 
-    setError('');
+    const res = await fetch('/api/juegos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(juego)
+    });
+    const data = await res.json();
+    console.log(data);
+
+    setLoading(false);
+    // setError('');
   }
 
   return (
@@ -51,8 +69,10 @@ const NuevoJuegoForm = () => {
         <div className="flex flex-col w-full">
           <label className="select-none font-josefin text-lg text-gray-700 italic">Título</label>
           <input
-            value={titulo}
-            onChange={(e) => setTitulo(e.target.value)}
+            // value={titulo}
+            value={juego.titulo}
+            name='titulo'
+            onChange={handleInput}
             type="text"
             placeholder="Nombre del juego"
             className="outline-none font-josefin text-lg border-2 px-2 py-1 rounded-md"
@@ -61,8 +81,10 @@ const NuevoJuegoForm = () => {
         <div className="flex flex-col w-full h-full">
           <label className="select-none font-josefin text-lg text-gray-700 italic">Categoría</label>
           <select 
-            value={categoria}
-            onChange={handleCategoria}
+            // value={categoria}
+            value={juego.categoria}
+            name='categoria'
+            onChange={ handleInput}
             className="bg-white h-full outline-none font-josefin text-lg border-2 px-2 py-1 rounded-md"
           >
             <option value="s" className="text-lg">
@@ -85,13 +107,25 @@ const NuevoJuegoForm = () => {
             </option>
           </select>
         </div>
+        <div className="flex flex-col w-full">
+          <label className="select-none font-josefin text-lg text-gray-700 italic">Precio ($)</label>
+          <input            
+            value={juego.price}
+            name='price'
+            onChange={handleInput}
+            type="number"
+            placeholder="Nombre del juego"
+            className="outline-none font-josefin text-lg border-2 px-2 py-1 rounded-md"
+          />
+        </div>
       </div>
 
       <div className="flex flex-col w-full mt-3">
         <label className="select-none font-josefin text-lg text-gray-700 italic">Descripción</label>
-        <textarea
-          value={descripcion}
-          onChange={(e) => setDescripcion(e.target.value)}
+        <textarea          
+          value={juego.descripcion}
+          name='descripcion'
+          onChange={handleInput}
           type="text"
           placeholder="Descripción del juego"
           className="resize-none h-[170px] outline-none font-josefin text-lg border-2 px-2 py-1 rounded-md"
@@ -107,9 +141,10 @@ const NuevoJuegoForm = () => {
           <label className="select-none font-josefin text-lg text-gray-700 italic">
             Box Image (Cards)
           </label>
-          <input
-            value={boxImage}
-            onChange={(e) => setBoxImage(e.target.value)}
+          <input            
+            value={juego.boxImage}
+            name='boxImage'
+            onChange={handleInput}
             type="text"
             placeholder="Link imágen de las cards"
             className="mb-4 outline-none font-josefin text-lg border-2 px-2 py-1 rounded-md"
@@ -118,9 +153,10 @@ const NuevoJuegoForm = () => {
           <label className="select-none font-josefin text-lg text-gray-700 italic">
             Poster Image (Background)
           </label>
-          <input
-            value={posterImage}
-            onChange={(e) => setPosterImage(e.target.value)}
+          <input            
+            value={juego.posterImage}
+            name='posterImage'
+            onChange={handleInput}
             type="text"
             placeholder="Link imágen de página de juego"
             className="mb-4 outline-none font-josefin text-lg border-2 px-2 py-1 rounded-md"
@@ -129,9 +165,10 @@ const NuevoJuegoForm = () => {
           <label className="select-none font-josefin text-lg text-gray-700 italic">
             Imágen 1 (Vista de Juego)
           </label>
-          <input
-            value={image1}
-            onChange={(e) => setImage1(e.target.value)}
+          <input            
+            value={juego.image1}
+            name='image1'
+            onChange={handleInput}
             type="text"
             placeholder="Link imágen de página de juego"
             className="mb-4 outline-none font-josefin text-lg border-2 px-2 py-1 rounded-md"
@@ -140,9 +177,10 @@ const NuevoJuegoForm = () => {
           <label className="select-none font-josefin text-lg text-gray-700 italic">
             Imágen 2 (Vista de Juego)
           </label>
-          <input
-            value={image2}
-            onChange={(e) => setImage2(e.target.value)}
+          <input            
+            value={juego.image2}
+            name='image2'
+            onChange={handleInput}
             type="text"
             placeholder="Link imágen de página de juego"
             className="mb-4 outline-none font-josefin text-lg border-2 px-2 py-1 rounded-md"
@@ -151,9 +189,10 @@ const NuevoJuegoForm = () => {
           <label className="select-none font-josefin text-lg text-gray-700 italic">
             Imágen 3 (Vista de Juego)
           </label>
-          <input
-            value={image3}
-            onChange={(e) => setImage3(e.target.value)}
+          <input            
+            value={juego.image3}
+            name='image3'
+            onChange={handleInput}
             type="text"
             placeholder="Link imágen de página de juego"
             className="mb-4 outline-none font-josefin text-lg border-2 px-2 py-1 rounded-md"
@@ -162,9 +201,10 @@ const NuevoJuegoForm = () => {
           <label className="select-none font-josefin text-lg text-gray-700 italic">
             Imágen 4 (Vista de Juego)
           </label>
-          <input
-            value={image4}
-            onChange={(e) => setImage4(e.target.value)}
+          <input            
+            value={juego.image4}
+            name='image4'
+            onChange={handleInput}
             type="text"
             placeholder="Link imágen de página de juego"
             className="mb-4 outline-none font-josefin text-lg border-2 px-2 py-1 rounded-md"

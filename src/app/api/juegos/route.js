@@ -23,17 +23,30 @@ const GET = async (req, res) => {
 
 }
 
-const POST = async (req, res) => {    
-  
-  const {nombre, description, boxImage, poster, image1, image2, image3, image4, price, category} = await req.json();
+const POST = async (req, res) => {      
 
-  try {    
-    await connectDB();   
-    const juego = await Juego.create({nombre, description, boxImage, poster, image1, image2, image3, image4, price, category});
-    return NextResponse.json(juego, {status: 201})
-  } catch (error) {
-    return NextResponse.json({msg: `${error.message}`}, {status: 500})
-  }
+  const juegoReq = await req.json();
+  console.log(juegoReq)
+
+   try {    
+     await connectDB();   
+     const juego = await Juego.create({
+        nombre: juegoReq.titulo,
+        category: juegoReq.categoria,
+        description: juegoReq.descripcion,
+        boxImage: juegoReq.boxImage,
+        poster: juegoReq.posterImage,
+        image1: juegoReq.image1,
+        image2: juegoReq.image2,
+        image3: juegoReq.image3,
+        image4: juegoReq.image4,
+        price: juegoReq.price,
+
+     });
+     return NextResponse.json(juego, {status: 201})
+   } catch (error) {
+     return NextResponse.json({msg: `${error.message}`}, {status: 404})
+   }
 
 }
 

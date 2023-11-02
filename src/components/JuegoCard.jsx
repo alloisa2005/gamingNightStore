@@ -7,8 +7,8 @@ const JuegoCard = ({ juego }) => {
       className="overflow-hidden mt-4 bg-white shadow-lg rounded-lg border-2 border-gray-200 hover:scale-105 hover:cursor-pointer ease-out duration-300"
     >
       <Image
-        className="object-cover w-full h-[200px]"
-        src={juego.poster}
+        className="object-contain w-full h-[200px]"
+        src={juego.boxImage}
         alt={juego.nombre}
         width={200}
         height={200}

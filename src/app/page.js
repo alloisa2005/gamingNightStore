@@ -3,7 +3,6 @@ import ComoComprar from "@/components/ComoComprar";
 import FilaJuegos from "@/components/FilaJuegos";
 import Hero from "@/components/Hero";
 import VisitarTienda from "@/components/VisitarTienda";
-import { latestJuegos, nuevosJuegos, usadosJuegos } from "@/data/juegos";
 
 export const metadata = {
   title: "Gaming Night Store | Inicio",  
