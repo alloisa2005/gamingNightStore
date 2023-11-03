@@ -1,10 +1,11 @@
 import { separadorMiles } from "@/utils/separadorMiles";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const JuegoCard = ({ juego }) => {
   return (
-    <div      
+    <Link href={`/detalle/${juego._id}`}      
       className="overflow-hidden mt-4 bg-white shadow-lg rounded-lg border-2 border-gray-200 hover:scale-105 hover:cursor-pointer ease-out duration-300"
     >
       <Image
@@ -22,7 +23,7 @@ const JuegoCard = ({ juego }) => {
           Precio ($): <span className="text-xl font-josefin font-bold text-naranja">{separadorMiles(juego.price)}</span> 
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

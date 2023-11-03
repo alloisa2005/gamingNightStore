@@ -9,5 +9,5 @@
 }
 
 .titulo {
-  @apply font-josefin text-3xl w-full border-b-2 border-b-naranja
+  @apply font-josefin text-2xl w-full border-b-2 border-b-naranja
 }

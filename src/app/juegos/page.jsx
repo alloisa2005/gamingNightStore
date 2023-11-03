@@ -20,7 +20,7 @@ const Juegos = async () => {
         juegos.map(juego => (          
           <div key={juego._id} className='relative w-full h-[200px] border hover:shadow-md hover:border-naranja rounded-md ease-out duration-300 p-2'>
             <div className="w-full h-[70%]">
-              <Link href={'/'}>
+              <Link href={`/detalle/${juego._id}`}>
                 <Image src={juego.boxImage} alt={juego.nombre} width={100} height={80} className='w-full h-full object-contain' />
               </Link>
             </div>
