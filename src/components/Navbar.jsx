@@ -8,9 +8,11 @@ import { BsWhatsapp, BsFacebook, BsInstagram } from "react-icons/bs";
 import SignInButton from "./SignInButton";
 import Flags from "./Flags";
 import { useSelector } from "react-redux";
+import { usePathname } from 'next/navigation'
 
 const Navbar = () => {  
 
+  const pathname = usePathname();
   const { spanish } = useSelector((state) => state.language);
 
   const [navbar, setNavbar] = useState(false);
@@ -31,20 +33,20 @@ const Navbar = () => {
         <ul className="hidden lg:flex items-center gap-6 text-white font-josefin text-xl font-bold z-20">
           <Link
             href={"/"}
-            className="cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
+            className={`${pathname === '/' ? 'font-bold text-naranja': ''} cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100`}
           >
             {spanish ? "Inicio" : "Home"}
           </Link>
           <Link
             href={"/juegos"}
-            className="cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
+            className={`${pathname === '/juegos' ? 'font-bold text-naranja': ''} cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100`}
           >
             {spanish ? "Juegos" : "Games"}
           </Link>
 
           <Link
             href={"/proximamente"}
-            className="cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
+            className={`${pathname === '/proximamente' ? 'font-bold text-naranja': ''} cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100`}
           >
             {spanish ? "Próximamente" : "Coming Soon"}
           </Link>
@@ -73,14 +75,14 @@ const Navbar = () => {
             <Link
               href={"/"}
               onClick={handleNavbar}
-              className="border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer"
+              className={`${pathname === '/' ? 'font-bold text-naranja' : ''} border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer`}
             >
               Inicio
             </Link>
             <Link
               href={"/juegos"}
               onClick={handleNavbar}
-              className="border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer"
+              className={`${pathname === '/juegos' ? 'font-bold text-naranja' : ''} border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer`}
             >
               Juegos
             </Link>    
@@ -88,7 +90,7 @@ const Navbar = () => {
             <Link
               href={"/proximamente"}
               onClick={handleNavbar}
-              className="border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer"
+              className={`${pathname === '/proximamente' ? 'font-bold text-naranja' : ''} border-b-2 border-slate-500 w-full text-right pb-1 cursor-pointer`}
             >
               Próximamente
             </Link> 

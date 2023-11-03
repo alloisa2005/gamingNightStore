@@ -4,8 +4,10 @@ import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { usePathname } from 'next/navigation'
 
 const SignInButton = ({ handleNavbar, dispositivo = "desktop" }) => {
+  const pathname = usePathname();
 
   const { spanish } = useSelector((state) => state.language);
 
@@ -59,7 +61,7 @@ const SignInButton = ({ handleNavbar, dispositivo = "desktop" }) => {
         <Link
           href={"/signin"}
           onClick={handleNavbar}
-          className="border-b-2 lg:border-b-0 border-slate-500  text-right cursor-pointer hover:bg-white hover:text-naranja p-2 rounded-md ease-in duration-100"
+          className={`${pathname === '/signin' ? 'font-bold text-naranja': ''} ${dispositivo === 'mobile' ? 'w-full text-right border-b-2 border-slate-500' : 'hover:bg-white hover:text-naranja p-2'} cursor-pointer placeholder:p-2 rounded-md ease-in duration-100`}
         >
           {spanish ? "Iniciar Sesión" : "Sign In"}
         </Link>
