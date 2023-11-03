@@ -14,7 +14,11 @@ const GET = async (req, res) => {
     if(query === 'latest') {
       juegos = await Juego.find().sort({createdAt: -1}).limit(4);
     }else{
-      juegos = await Juego.find().sort({createdAt: -1});
+      if(query === 'orderNombre'){
+        juegos = await Juego.find().sort({nombre: 1});
+      }else{
+        juegos = await Juego.find().sort({createdAt: -1});
+      }
     }
     return NextResponse.json(juegos, {status: 201})
   } catch (error) {
