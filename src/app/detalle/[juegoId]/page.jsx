@@ -1,3 +1,4 @@
+import ImageDescription from '@/components/ImageDescription';
 import Image from 'next/image';
 import React from 'react'
 
@@ -11,7 +12,7 @@ const DetalleJuego = async ({ params }) => {
 
   const { juegoId } = params;
   const juego = await getJuego(juegoId);
-  console.log(juego)
+  //console.log(juego)
 
   return (
     <div className='w-full'>
@@ -25,8 +26,19 @@ const DetalleJuego = async ({ params }) => {
         <Image src={juego.poster} alt={juego.nombre} width={500} height={200} priority className='w-full h-full object-cover' />
       </div>
 
-      <div className='contenedor mt-3'>
-        <h1 className='titulo'>Descripción</h1>
+      <h1 className='contenedor mt-3 titulo'>Descripción</h1>
+      <div className='contenedor my-4 font-josefin flex flex-col lg:flex-row justify-between gap-4'>
+        <div className='flex-1'>
+          <p className='text-lg'>{juego.description}</p>                  
+        </div>
+
+        <div className='w-full lg:w-[40%] grid grid-cols-2 gap-4'>          
+          <ImageDescription sourceImg={juego.image1} nombre={juego.nombre} />
+          <ImageDescription sourceImg={juego.image2} nombre={juego.nombre} />
+          <ImageDescription sourceImg={juego.image3} nombre={juego.nombre} />
+          <ImageDescription sourceImg={juego.image4} nombre={juego.nombre} />
+        </div>
+
       </div>
     </div>
   )

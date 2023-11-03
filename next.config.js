@@ -10,6 +10,7 @@ const nextConfig = {
       "i.blogs.es",
       "m.media-amazon.com",
       'misutmeeple.com',
+      'trotamundos.com.uy'
     ],
   },
 };
