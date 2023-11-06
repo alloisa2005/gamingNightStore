@@ -14,7 +14,7 @@ export default async function Home() {
     <>
       <Hero />
            
-      <FilaJuegos titulo={'Recién agregados'} query={'latest'} />
+      <FilaJuegos titulo={'Recién llegados'} query={'latest'} />
 
       {/* <FilaJuegos titulo={'destacados'} /> */}
 

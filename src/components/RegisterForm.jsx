@@ -45,23 +45,7 @@ const RegisterForm = () => {
         setError(response.errorMsg);
         return;
       }    
-      const imgUrl = response.imgUrl;
-
-      // const formData = new FormData();
-      // formData.append("file", fileImg);
-
-      // const responseImg = await fetch("/api/upload", {
-      //   method: "POST",
-      //   body: formData,
-      // });
-
-      // if (!responseImg.ok) {
-      //   setLoading(false);
-      //   setError("Error al subir la imagen");
-      //   return;
-      // }
-
-      // const { imgUrl } = await responseImg.json();
+      const imgUrl = response.imgUrl;      
 
       const res = await fetch("/api/register", {
         method: "POST",
@@ -71,12 +55,7 @@ const RegisterForm = () => {
         body: JSON.stringify({ nombre, email, password, address, imgUrl }),
       });
 
-      if (res.ok) {
-        setNombre("");
-        setEmail("");
-        setPassword("");
-        setAddress("");
-        setLoading(false);
+      if (res.ok) {        
         router.push("/signin");
       } else {
         const data = await res.json();
