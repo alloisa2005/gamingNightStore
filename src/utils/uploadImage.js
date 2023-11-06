@@ -31,13 +31,15 @@ export const uploadUserImage = async (file) => {
     image.append("cloud_name", 'dayyupv1u');
     image.append("upload_preset", 'gns-users');          
 
+    console.log(image)
+
     const res = await fetch('http://api.cloudinary.com/v1_1/dayyupv1u/image/upload', {
         method: "POST",
         body: image,
     });
 
-    const data = await res.json();         
-    
+    const data = await res.json();             
+
     return {error:false, errorMsg: '', imgUrl: data.secure_url};
 
   } catch (error) {      

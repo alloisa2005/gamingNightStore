@@ -16,7 +16,7 @@ const DetalleJuego = async ({ params }) => {
 
   return (
     <div className='w-full'>
-      <div className='w-full h-[220px] md:h-[260px] lg:h-[265px] relative'>
+      <div className='w-full h-[220px] md:h-[260px] lg:h-[320px] relative'>
         <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/80'></div>
         <div className='w-full absolute left-0 bottom-5'>
           <div className='w-full max-w-[1350px] mx-auto px-4 '>

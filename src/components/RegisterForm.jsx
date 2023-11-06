@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Spinner from "./Spinner";
 import { useSession } from "next-auth/react";
+import { uploadUserImage } from "@/utils/uploadImage";
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -38,21 +39,29 @@ const RegisterForm = () => {
         return;
       }
 
-      const formData = new FormData();
-      formData.append("file", fileImg);
-
-      const responseImg = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!responseImg.ok) {
+      let response = await uploadUserImage(fileImg);
+      if(response.error){
         setLoading(false);
-        setError("Error al subir la imagen");
+        setError(response.errorMsg);
         return;
-      }
+      }    
+      const imgUrl = response.imgUrl;
 
-      const { imgUrl } = await responseImg.json();
+      // const formData = new FormData();
+      // formData.append("file", fileImg);
+
+      // const responseImg = await fetch("/api/upload", {
+      //   method: "POST",
+      //   body: formData,
+      // });
+
+      // if (!responseImg.ok) {
+      //   setLoading(false);
+      //   setError("Error al subir la imagen");
+      //   return;
+      // }
+
+      // const { imgUrl } = await responseImg.json();
 
       const res = await fetch("/api/register", {
         method: "POST",
